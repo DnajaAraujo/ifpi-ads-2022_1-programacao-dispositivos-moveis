@@ -118,9 +118,9 @@ void main() {
   if (media >= 7) {
     print("aprovado");
   } else if (media < 4) {
-    print("reprovado");
+      print("reprovado");
   } else {
-    print("exame final");
+      print("exame final");
   }
 }
 ~~~
