@@ -3,40 +3,39 @@
 #### Questão #01
 ~~~Dart
 void main() {
-  num n1,n2;
-  n1 = 10.3;
-  n2 = 1;
+  double n1,n2;
+  n1 = 10;
+  n2 = 3.5;
   
   // letra a
-  num resto = n1 % n2;
-  print("Resto da divisao de n1 por n2: $resto");
+  double resto = n1 % n2;
+  print("Resto da divisão de n1 por n2: $resto");
   
   // letra b
-  num divisao_inteira = n1 ~/ n2;
-  print("Divisao inteira de n1 por n2: $divisao_inteira");
+  int divisaoInteira = n1 ~/ n2;
+  print("Divisão inteira de n1 por n2: $divisaoInteira");
   
   // letra c
-  num potenciacao = potencia(n1, n2);
+  double potenciacao = potencia(n1, n2);
   print("n1 elevado a n2: $potenciacao");
   
   // letra d
   if (n1 is int) {
-    print("n1 eh um numero inteiro!");
+    print("n1 é um número inteiro!");
   }
   
   // letra e
   if (n1 is! int) {
-    print("n1 nao eh um numero inteiro!");
+    print("n1 não é um número inteiro!");
   }
-  
 }
 
 
-num potencia(num n1, num n2) {
+double potencia(double n1, double n2) {
   int cont = 0; 
   double resultado = 1;
   
-  if (n2 >= 1) {
+  if (n2 > 0) {
     while(cont < n2) {
       resultado *= n1;
       cont ++;
@@ -77,15 +76,16 @@ void main() {
   double salario;
   salario = 1000;
   
+  print(r"Salário com reajuste (em R$) a cada ano: ");
+  
   salario += (salario * (7/100));
-  print("Salario (1° ano): $salario");
+  print(r"1° ano: R$" + " $salario");
   
   salario += (salario * (6/100));
-  print("Salario (2° ano): $salario");
+  print(r"2° ano: R$" + " $salario");
   
   salario += (salario * (5/100));
-  print("Salario (3° ano): $salario");
-  
+  print(r"3° ano: R$" + " $salario");
 }
 ~~~
 
@@ -116,7 +116,6 @@ void main() {
   } else {
     print("exame final");
   }
-  
 }
 ~~~
 
@@ -130,7 +129,6 @@ void main() {
     print("$ponto$i");
     ponto += '.';
   }
-  
 }
 ~~~
 
@@ -146,7 +144,5 @@ void main() {
 ~~~
 
 #### Questão #09
-~~~Dart
-
-~~~
+- Link do vídeo: 
 
