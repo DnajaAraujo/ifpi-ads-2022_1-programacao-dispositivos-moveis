@@ -1,11 +1,12 @@
 # Exercícios de Dart #01
 
+
 #### Questão #01
 ~~~Dart
 void main() {
   double n1,n2;
   n1 = 10;
-  n2 = 3.5;
+  n2 = 3;
   
   // letra a
   double resto = n1 % n2;
@@ -41,15 +42,16 @@ double potencia(double n1, double n2) {
       cont ++;
     }
   } else if (n2 < 0) {
-    while(cont > n2) {
-      resultado /= n1;
-      cont --;
+      while(cont > n2) {
+        resultado /= n1;
+        cont --;
     }
   }
   
   return resultado;
 }
 ~~~
+
 
 #### Questão #02
 ~~~Dart
@@ -63,12 +65,14 @@ void main() {
 }
 ~~~
 
+
 #### Questão #03
 ~~~Dart
 void main() {
   print(r'O caractere de escape \t representa uma "tabulação"');
 }
 ~~~
+
 
 #### Questão #04
 ~~~Dart
@@ -89,6 +93,7 @@ void main() {
 }
 ~~~
 
+
 #### Questão #05
 ~~~Dart
 void main() {
@@ -99,6 +104,7 @@ void main() {
   print(res); // 12
 }
 ~~~
+
 
 #### Questão #06
 ~~~Dart
@@ -119,6 +125,7 @@ void main() {
 }
 ~~~
 
+
 #### Questão #07
 ~~~Dart
 void main() {
@@ -132,6 +139,7 @@ void main() {
 }
 ~~~
 
+
 #### Questão #08
 ~~~Dart
 void main() {
@@ -142,6 +150,7 @@ void main() {
   });
 }
 ~~~
+
 
 #### Questão #09
 - Link do vídeo: 
