@@ -33,6 +33,7 @@ double multiplicarTodosElementos(List lista) {
   return produto;
 }
 
+
 void main() {
   List l1 = [1,2,3,4,2];
   print(multiplicarTodosElementos(l1));
