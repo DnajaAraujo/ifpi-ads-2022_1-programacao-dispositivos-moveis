@@ -80,8 +80,6 @@ void main() {
 
 #### Questão #04
 ~~~Dart
-// Tomei liberdade de criar minha própria função pow()
-
 double pow(int n1, int n2) {
   double potencia = 1;
   int cont = 0;
@@ -123,7 +121,86 @@ void main() {
 
 #### Questão #05
 ~~~Dart
+class Pessoa {
+  String? _nome;
+  String? _sobrenome;
+  
+  Pessoa();
+  
+  Pessoa.constructor2(this._nome, this._sobrenome);
+  
+  String get nome {
+    return this._nome!;
+  }
+  
+  set nome(String nome) {
+    this._nome = nome;
+  }
+  
+  String get sobrenome {
+    return this._sobrenome!;
+  }
+  
+  set sobrenome(String sobrenome) {
+    this._sobrenome = sobrenome;
+  }
+  
+  String getNomeCompleto() {
+    return this._nome! + " " + this._sobrenome!;
+  }
+}
 
+
+class Funcionario extends Pessoa {
+  int? _matricula;
+  double? _salario;
+  
+  Funcionario(String nome, String sobrenome) : super.constructor2(nome, sobrenome);
+  
+  int get matricula {
+    return this._matricula!;
+  }
+  
+  set matricula(int matricula) {
+    this._matricula = matricula;
+  }
+  
+  double get salario {
+    return this._salario!;
+  }
+  
+  set salario(double salario) {
+    if (salario > 0)
+      this._salario = salario;
+    else
+      this._salario = 0;
+  }
+  
+  double getSalarioPrimeiraParcela() {
+    double primeiraParcela = this._salario! * (60/100);
+    return primeiraParcela;
+  }
+  
+  double getSalarioSegundaParcela() {
+    double segundaParcela = this._salario! - getSalarioPrimeiraParcela();
+    return segundaParcela;
+  }
+}
+
+
+void main() {
+  Pessoa p1 = Pessoa();
+  p1.nome = "Dnajá";
+  p1.sobrenome = "Araújo";
+  print(p1.getNomeCompleto());
+  
+  Funcionario f1 = Funcionario("Dnajá", "Araújo");
+  f1.matricula = 7;
+  f1.salario = 1000;
+  print(f1.getSalarioPrimeiraParcela());
+  print(f1.getSalarioSegundaParcela());
+  print(f1.getNomeCompleto());
+}
 ~~~
 
-- Link do vídeo: 
+- Link do vídeo: https://drive.google.com/file/d/1gMEeaKU0_quT6IHWxQ-bFsWlAzBk3IYS/view?usp=sharing
