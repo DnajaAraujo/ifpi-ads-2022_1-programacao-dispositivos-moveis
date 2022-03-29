@@ -1,8 +1,8 @@
 class Question {
   late String questionText;
-  late bool questionAnswer;
+  late int questionAnswer;
 
-  Question(String q, bool a) {
+  Question(String q, int a) {
     questionText = q;
     questionAnswer = a;
   }

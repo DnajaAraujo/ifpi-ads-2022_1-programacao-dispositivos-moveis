@@ -4,9 +4,16 @@ class QuizBrain {
   int _questionNumber = 0;
 
   final List<Question> _questionBank = [
-    Question('Some cats are actually allergic to humans.', true),
-    Question('You can lead a cow down stairs but not up stairs.', false),
-    Question('Approximately one quarter of human bones are in the feet.', true),
+    Question('Some cats are actually allergic to humans.', 1),
+    Question('You can lead a cow down stairs but not up stairs.', 3),
+    Question('The universe is infinite.', 2),
+    Question('Tea contains more caffeine than coffee and soda.', 3),
+    Question('Approximately one quarter of human bones are in the feet.', 1),
+    Question('Mice have more bones than humans.', 1),
+    Question('The capital of Australia is Sydney.', 3),
+    Question('There is life outside the Earth.', 2),
+    Question('Bing by Microsoft is the most popular search engine on the Internet.', 3),
+    Question('Press any key to restart', 0),
   ];
 
   void nextQuestion() {
@@ -19,7 +26,7 @@ class QuizBrain {
     return _questionBank[_questionNumber].questionText;
   }
 
-  bool getCorrectAnswer() {
+  int getCorrectAnswer() {
     return _questionBank[_questionNumber].questionAnswer;
   }
 

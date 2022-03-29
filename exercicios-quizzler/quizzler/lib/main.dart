@@ -10,10 +10,10 @@ class Quizzler extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Color.fromARGB(255, 0, 0, 130),
+        backgroundColor: Color.fromARGB(255, 0, 0, 120),
         appBar: AppBar(
           title: const Text('Quizzler'),
-          backgroundColor: Color.fromARGB(255, 0, 0, 120),
+          backgroundColor: Color.fromARGB(255, 0, 0, 110),
         ),
         body: QuizPage(),
       ),
@@ -34,8 +34,8 @@ class _QuizPageState extends State<QuizPage> {
 
   List<Icon> scoreKeeper = [];
 
-  void checkAnswer(bool userPickedAnswer) {
-    bool correctAnswer = quizBrain.getCorrectAnswer();
+  void checkAnswer(int userPickedAnswer) {
+    int correctAnswer = quizBrain.getCorrectAnswer();
 
     setState(() {
       if(!quizBrain.isFinished()) {
@@ -80,17 +80,16 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
               textColor: Colors.white,
-              color: Colors.green,
+              color: Colors.lightGreen,
               child: const Text(
                 'True',
                 style: TextStyle(
-                  color: Colors.white,
                   fontSize: 20.0,
                 ),
               ),
               onPressed: () {
                 setState(() {
-                  checkAnswer(true);
+                  checkAnswer(1);
                 });
               },
             ),
@@ -101,7 +100,27 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(15.0),
             child: FlatButton(
               textColor: Colors.white,
-              color: Colors.red,
+              color: Colors.lightBlue,
+              child: const Text(
+                'Maybe',
+                style: TextStyle(
+                  fontSize: 20.0,
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  checkAnswer(2);
+                });
+              },
+            ),
+          )
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.redAccent,
               child: const Text(
                 'False',
                 style: TextStyle(
@@ -111,7 +130,7 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  checkAnswer(false);
+                  checkAnswer(3);
                 });
               }
             ),
@@ -124,5 +143,8 @@ class _QuizPageState extends State<QuizPage> {
     );
   }
 }
+
+
+
 
 
