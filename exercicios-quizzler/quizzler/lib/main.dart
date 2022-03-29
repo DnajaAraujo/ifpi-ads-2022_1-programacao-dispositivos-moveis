@@ -13,6 +13,7 @@ class Quizzler extends StatelessWidget {
         backgroundColor: Color.fromARGB(255, 0, 0, 120),
         appBar: AppBar(
           title: const Text('Quizzler'),
+          centerTitle: true,
           backgroundColor: Color.fromARGB(255, 0, 0, 110),
         ),
         body: QuizPage(),
