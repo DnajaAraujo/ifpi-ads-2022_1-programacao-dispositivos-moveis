@@ -4,10 +4,10 @@ void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-      backgroundColor: Colors.blue,
+      backgroundColor: Color.fromARGB(255, 0, 0, 130),
         appBar: AppBar(
           title: const Text('Slide App'),
-          backgroundColor: Colors.lightBlue,
+          backgroundColor: Color.fromARGB(255, 0, 0, 145),
         ),
         body: SlidePage(),
       ),
@@ -24,16 +24,65 @@ class SlidePage extends StatefulWidget {
 
 class _SlidePageState extends State<SlidePage> {
   int imageKey = 1;
+  int like = 0;
+  Color colorLike = Colors.white;
+  late List likeList = createLikeList();
 
+  // "Database"
+  List createLikeList() {
+    List list = [0,0,0,0,0];
+
+    for (int i = 0; i < 5; i++) {
+      list[i] = [i+1, 0];
+    }
+    return list;
+  }
+
+  void updateLikeList(int key, int status) {
+    likeList[key-1] = [key, status];
+  }
+  
+  int getLikeFromList(int key) {
+    return likeList[key-1][1];
+  }
+
+
+  // Images update
   void previousImage() {
     setState(() {
-      if (imageKey > 1) imageKey --;
+      if (imageKey > 1) {
+        updateLikeList(imageKey, like);
+        imageKey --;
+      }
     });
   }
 
   void nextImage() {
     setState(() {
-      if (imageKey < 5) imageKey ++;
+      if (imageKey < 5) {
+        updateLikeList(imageKey, like);
+        imageKey ++;
+      }
+    });
+  }
+
+  void changeLike() {
+    setState(() {
+      if (like == 0) {
+        like = 1;
+        colorLike = Colors.redAccent;
+      } 
+      else {
+        like = 0;
+        colorLike = Colors.white;
+      }
+    });
+  }
+
+  void changeColor(int like) {
+    setState(() {
+      if (like != 1) colorLike = Colors.white;
+      else colorLike = Colors.redAccent;
     });
   }
 
@@ -44,24 +93,41 @@ class _SlidePageState extends State<SlidePage> {
       child: Column(
         children: <Widget>[
           Expanded(
-            child: Image.asset('images/img$imageKey.jpg'),
+            child: Container(
+              margin: const EdgeInsets.all(10),
+              child: Image.asset('images/img$imageKey.png'),
+            ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              TextButton(
-                child: buildContainer('<', Colors.redAccent, 100, 100),
-                onPressed: () {
-                  previousImage(); 
-                }
-              ),
-              TextButton(
-                child: buildContainer('>', Colors.redAccent, 100, 100),
-                onPressed: () {
-                  nextImage(); 
-                }
-              ),
-            ],
+          Container(
+            margin: const EdgeInsets.all(5),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                TextButton(
+                  child: buildIcon(0, Colors.white, 40),
+                  onPressed: () {
+                    previousImage(); 
+                    like = getLikeFromList(imageKey);
+                    changeColor(like);
+                  }
+                ),
+                TextButton(
+                  child: buildIcon(2, colorLike, 40),
+                  onPressed: () {
+                    changeLike();
+                  }
+                ),
+                TextButton(
+                  child: buildIcon(1, Colors.white, 40),
+                  onPressed: () {
+                    nextImage();
+                    like = getLikeFromList(imageKey);
+                    changeColor(like); 
+                  }
+                ),
+              ],
+            ),
           )
         ]
       ),
@@ -70,20 +136,18 @@ class _SlidePageState extends State<SlidePage> {
 }
 
 
-Container buildContainer(String text, Color color, double width, double height) {
-  return Container(
-      width: width,
-      height: height,
-      color: color,
-      child: Center(
-        child: Text(text, 
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 80
-          ),
-        ),
-      )
-    );
+Icon buildIcon(int index, Color color, double size) {
+  List<IconData> icons = [
+    Icons.arrow_back,
+    Icons.arrow_forward,
+    Icons.favorite,
+  ];
+
+  return Icon(
+          icons[index],
+          size: size,
+          color: color,
+      );
 }
 
 
