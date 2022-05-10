@@ -166,7 +166,7 @@ class _SlidePageState extends State<SlidePage> {
                 TextButton(
                   child: buildIcon(2, colorLike, 40),
                   onPressed: () {
-                    changeLike();
+                    changeLike(); 
                   }
                 ),
                 TextButton(
