@@ -6,12 +6,12 @@ import 'package:path_provider/path_provider.dart';
 
 class DatabaseHelper {
 
-  static final _databaseName = 'ExemploDB.db';
-  static final _databaseVersion = 1;
+  static const _databaseName = 'ExemploDB.db';
+  static const _databaseVersion = 1;
 
-  static final table = 'liked_posts';
-  static final columnId = '_id';
-  static final columnLike = 'like';
+  static const table = 'liked_posts';
+  static const columnId = '_id';
+  static const columnLike = 'like';
 
   DatabaseHelper._privateConstructor();
   static final DatabaseHelper instance = DatabaseHelper._privateConstructor();

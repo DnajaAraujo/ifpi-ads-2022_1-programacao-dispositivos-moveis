@@ -1,13 +1,6 @@
-import 'dart:convert';
-//import 'dart:html';
-import 'dart:io';
 import 'package:posts_list_final/db/db_helper.dart';
 import 'package:posts_list_final/models/post.dart';
-import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'models/comment.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:sqflite/sqflite.dart';
 
 
 class DetailsPage extends StatefulWidget {
@@ -138,9 +131,9 @@ class _DetailsPageState extends State<DetailsPage> {
   }
 
 
-  void _insert() async {
+  void _insert() {
     for (int i = 1; i <= 100; i++) {
-      await dbHelper.insert(i, 0);
+      dbHelper.insert(i, 0);
     }
   }
 
