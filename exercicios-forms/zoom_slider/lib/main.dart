@@ -27,9 +27,23 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var _value = 0;
-  var _width = 100;
-  var _height = 100;
+  double _value = 1;
+  late TransformationController transformationController;
+
+
+  @override
+  void initState() {
+    transformationController = TransformationController();
+    super.initState();
+  }
+
+
+  @override
+  void dispose() {
+    transformationController.dispose();
+    super.dispose();
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -39,31 +53,29 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                color: Colors.green,
-                margin: EdgeInsets.all(5),
-                child: Image.network(
-                  'https://images.unsplash.com/photo-1547721064-da6cfb341d50',
-                  fit: BoxFit.cover,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Container(
+              height: 480,
+              padding: const EdgeInsets.all(5),
+              child: InteractiveViewer(
+                child: Transform.scale(
+                  scale: _value,
+                  child: Image.asset("images/beach.png"),
                 ),
               ),
             ),
             Slider(
-              value: _value.toDouble(),
+              value: _value,
+              min: 0.1,
+              max: 5,
               onChanged: (value) {
                 setState(() {
-                  _value = value.toInt();
-                  _width = value.toInt();
-                  _height = value.toInt();
+                  _value = value;
+                  transformationController.value = Matrix4.identity();
                 });
               },
-              min: 0,
-              max: 100,
+              
             )
           ],
         ),
